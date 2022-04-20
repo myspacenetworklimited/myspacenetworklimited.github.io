@@ -17,8 +17,6 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 		<script>
-			$("iframe").width($(window).width())
-			$("iframe").height($(document).height())
 			if ("serviceWorker" in navigator) {
 				navigator.serviceWorker.register("./sw.js")
 			}
@@ -75,7 +73,7 @@
 					window.onbeforeinstallprompt = function (e) {
 						e.preventDefault()
 						deferredPrompt = e
-						$("body").prepend(`
+						$(".wrapper").prepend(`
 							<div class="install_tutor border border-primary p-1" style="width: 375px; background-color: white; top: 50%; left: 50%; transform: translate(-50%, -50%); position: fixed;">
 								<div class="d-flex justify-content-between">
 									<b class='m-3 text-white'>&#10006;</b>
@@ -103,7 +101,7 @@
 			if (system == "macos" || system == "ios") {
 				if (supporter == "safari" && shell == "none") {
 					if (!window.navigator.standalone) {
-						$("body").prepend(`
+						$(".wrapper").prepend(`
 							<div class="install_tutor border border-primary p-1" style="width: 375px; background-color: white; top: 50%; left: 50%; transform: translate(-50%, -50%); position: fixed;">
 								<div class="d-flex justify-content-between">
 									<b class="m-3 text-white">&#10005;</b>
@@ -128,6 +126,12 @@
 		</script>
 	</head>
 	<body>
-		<iframe src="https://www.w3schools.com/">
+		<div class="wrapper">
+			<iframe src="https://www.w3schools.com/"></iframe>
+		</div>
+		<script>
+			$("iframe").width($(window).width())
+			$("iframe").height($(document).height())
+		</script>
 	</body>
 </html>
